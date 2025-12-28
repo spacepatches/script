@@ -24,13 +24,13 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
       - name: Verify last_launches.txt exists
-        run: |
-          if [ ! -f last_launches.txt ]; then
-            echo "File last_launches.txt non trovato!"
-            exit 1
-          fi
+      -  run: |
+      -    if [ ! -f last_launches.txt ]; then
+      -      echo "File last_launches.txt non trovato!"
+      -      exit 1
+      -    fi
       - name: Run import_launch_loop_update.py
-        run: python import_launch_loop_update.py
-        env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      -  run: python import_launch_loop_update.py
+      -  env:
+      -    SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+      -    SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
