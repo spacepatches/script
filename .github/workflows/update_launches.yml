@@ -1,0 +1,36 @@
+name: Daily Launch Data Update
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  update-launches:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run estrai_dati_lanci.py
+        run: python estrai_dati_lanci.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      - name: Verify last_launches.txt exists
+        run: |
+          if [ ! -f last_launches.txt ]; then
+            echo "File last_launches.txt non trovato!"
+            exit 1
+          fi
+      - name: Run import_launch_loop_update.py
+        run: python import_launch_loop_update.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
