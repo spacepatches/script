@@ -5,11 +5,23 @@ import requests
 #    "?lsp__name=Rocket%20Lab"
 #)
 
+from datetime import datetime, timedelta, timezone
+
+# Calcola le date usando datetime aware in UTC
+two_days_ago = datetime.now(timezone.utc) - timedelta(days=2)
+tomorrow = datetime.now(timezone.utc) + timedelta(days=1)
+
+# Formatta le date in ISO 8601
+start_date = two_days_ago.strftime("%Y-%m-%dT00:00:00Z")
+end_date = tomorrow.strftime("%Y-%m-%dT23:59:59Z")
+
+# Costruisci l'URL
 URL = (
     "https://ll.thespacedevs.com/2.3.0/launches/"
-    "?window_start__gte=2025-12-28T00:00:00Z"
-    "&window_end__lte=2025-12-31T23:59:59Z"
+    f"?window_start__gte={start_date}"
+    f"&window_end__lte={end_date}"
 )
+
 
 OUTPUT_FILE = "last_launches.txt"
 
