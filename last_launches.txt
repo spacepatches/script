@@ -1,7 +1,1 @@
-2026-01-16T16:55:00Z | Long March 3B/E | Shijian 32 | https://ll.thespacedevs.com/2.3.0/launches/67068998-010a-40cc-8bc8-a60743cda331/
-2026-01-17T04:08:00Z | Ceres-2 | Demo Flight | https://ll.thespacedevs.com/2.3.0/launches/7650a17a-cc52-4597-bd1a-0951d7389a95/
-2026-01-17T04:39:51Z | Falcon 9 Block 5 | NROL-105 | https://ll.thespacedevs.com/2.3.0/launches/1cdbe42e-22bb-470e-9107-edcc4c902ee5/
-2026-01-18T23:31:40Z | Falcon 9 Block 5 | Starlink Group 6-100 | https://ll.thespacedevs.com/2.3.0/launches/13979f7e-c835-4813-860f-915c8ce9e784/
-2026-01-19T07:48:00Z | Long March 12 | SatNet LEO Group 19 | https://ll.thespacedevs.com/2.3.0/launches/878c07cc-73db-4be6-8492-42f2890a498a/
-2026-01-20T11:09:00Z | Electron | The Cosmos Will See You Now (Open Cosmos Constellation Launch 1) | https://ll.thespacedevs.com/2.3.0/launches/50a682c6-1da0-4859-a163-4182c7619178/
 2026-01-21T20:00:00Z | Spectrum | Onward and Upward | https://ll.thespacedevs.com/2.3.0/launches/1b23eb18-e06e-4058-9b42-e95ca0980511/
