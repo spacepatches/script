@@ -38,6 +38,11 @@ jobs:
 
       - name: Run import_launch_loop_update_local.py
         run: python import_launch_loop_update_local.py
-        env:
+        env:                        # Secrets globali disponibili a tutti gli script
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_PORT: ${{ secrets.DB_PORT }}
