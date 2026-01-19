@@ -21,16 +21,16 @@ jobs:
       - name: Run estrai_dati_lanci.py
         run: python estrai_dati_lanci.py
         env:
-          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          SUPABASE_URL: ${{https://dnrlaowhagxjfjzkoyur.supabase.co}}
+          SUPABASE_KEY: ${{sb_publishable_8Rsg9hKeaur_seeAGVJd8w_H60X9ZVG}}
       - name: Verify last_launches.txt exists
       -  run: |
       -    if [ ! -f last_launches.txt ]; then
       -      echo "File last_launches.txt non trovato!"
       -      exit 1
       -    fi
-      - name: Run import_launch_loop_update.py
-      -  run: python import_launch_loop_update.py
+      - name: Run import_launch_loop_update_local.py
+      -  run: python import_launch_loop_update_local.py
       -  env:
-      -    SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
-      -    SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      -    SUPABASE_URL: ${{https://dnrlaowhagxjfjzkoyur.supabase.co}}
+      -    SUPABASE_KEY: ${{sb_publishable_8Rsg9hKeaur_seeAGVJd8w_H60X9ZVG}}
