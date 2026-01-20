@@ -17,6 +17,7 @@ conn = psycopg2.connect(
     user=os.getenv("DB_USER"),
     password=os.getenv("DB_PASSWORD"),
     port=os.getenv("DB_PORT"),
+    sslmode="require",         # obbligatorio con Supabase
     connect_timeout=10
 )
 
