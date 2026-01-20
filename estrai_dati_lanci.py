@@ -8,7 +8,7 @@ import requests
 from datetime import datetime, timedelta, timezone
 
 # Calcola le date usando datetime aware in UTC
-two_days_ago = datetime.now(timezone.utc) - timedelta(days=0)
+two_days_ago = datetime.now(timezone.utc) - timedelta(days=1)
 tomorrow = datetime.now(timezone.utc) + timedelta(days=1)
 
 # Formatta le date in ISO 8601
