@@ -11,13 +11,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 conn = psycopg2.connect(
     host=os.getenv("DB_HOST"),
     dbname=os.getenv("DB_NAME"),
     user=os.getenv("DB_USER"),
     password=os.getenv("DB_PASSWORD"),
     port=os.getenv("DB_PORT"),
-    sslmode="require",         # obbligatorio con Supabase
+    sslmode="require",         # obbligatorio con Supabase pooler
     connect_timeout=10
 )
 
