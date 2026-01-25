@@ -177,28 +177,29 @@ def import_launch(launch_id: str) -> None:
             landing.get("landing_location", {}).get("abbrev"),
         ))
 
-    if launcher_rows:
-execute_values(
-    cur,
-    """
-    insert into launcher_stage (
-        launch_id,
-        stage_type,
-        serial_number,
-        flights,
-        landing_success,
-        landing_location_name,
-        landing_location_abbrev
+if launcher_rows:
+    execute_values(
+        cur,
+        """
+        insert into launcher_stage (
+            launch_id,
+            stage_type,
+            serial_number,
+            flights,
+            landing_success,
+            landing_location_name,
+            landing_location_abbrev
+        )
+        values %s
+        on conflict (launch_id, stage_type)
+        do update set
+            serial_number   = excluded.serial_number,
+            flights         = excluded.flights,
+            landing_success = excluded.landing_success;
+        """,
+        launcher_rows
     )
-    values %s
-    on conflict (launch_id, stage_type)
-    do update set
-        serial_number   = excluded.serial_number,
-        flights         = excluded.flights,
-        landing_success = excluded.landing_success;
-    """,
-    launcher_rows
-)
+
 
 
     # --------------------------------------------------
