@@ -11,14 +11,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
 conn = psycopg2.connect(
-    host=os.getenv("DB_HOST"),
-    dbname=os.getenv("DB_NAME"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASSWORD"),
-    port=os.getenv("DB_PORT"),
-    sslmode="require",         # obbligatorio con Supabase pooler
+    host=os.getenv("SUPABASE_DB_HOST"),
+    dbname=os.getenv("SUPABASE_DB_NAME"),
+    user=os.getenv("SUPABASE_DB_USER"),
+    password=os.getenv("SUPABASE_DB_PASSWORD"),
+    port=os.getenv("SUPABASE_DB_PORT"),
     connect_timeout=10
 )
 
@@ -180,17 +178,28 @@ def import_launch(launch_id: str) -> None:
         ))
 
     if launcher_rows:
-        execute_values(
-            cur,
-            """
-            insert into launcher_stage (
-                launch_id, stage_type, serial_number, flights,
-                landing_success, landing_location_name, landing_location_abbrev
-            ) values %s
-            on conflict do nothing;
-            """,
-            launcher_rows
-        )
+execute_values(
+    cur,
+    """
+    insert into launcher_stage (
+        launch_id,
+        stage_type,
+        serial_number,
+        flights,
+        landing_success,
+        landing_location_name,
+        landing_location_abbrev
+    )
+    values %s
+    on conflict (launch_id, stage_type)
+    do update set
+        serial_number   = excluded.serial_number,
+        flights         = excluded.flights,
+        landing_success = excluded.landing_success;
+    """,
+    launcher_rows
+)
+
 
     # --------------------------------------------------
     # spacecraft + crew (immutabile)
