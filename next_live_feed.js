@@ -40,7 +40,7 @@ async function loadNextLaunchVideo() {
     .gte("net", nowISO)
     .in("status_abbrev", ["Go"])
     .not("vid_url", "is", null)
-    .order("net", { ascending: false })
+    .order("net", { ascending: true })
     .limit(1); // 🔴 SOLO il più recente
 
   if (error || !data || data.length === 0) {
