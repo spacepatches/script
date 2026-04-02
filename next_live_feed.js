@@ -37,7 +37,7 @@ async function loadNextLaunchVideo() {
       net,
       vid_url
     `)
-    .lte("net", nowISO)
+    .gte("net", nowISO)
     .in("status_abbrev", ["Go"])
     .not("vid_url", "is", null)
     .order("net", { ascending: false })
