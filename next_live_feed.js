@@ -67,7 +67,7 @@ function renderNextVideo(launch) {
     <div>
       <h3 style="text-align: left;">
         <span style="font-weight: normal;">
-        🛰️ Here you can watch live the next rocket launch feed available.<br>  
+        🛰️ Here you can watch live the next rocket launch.   
         ${launch.lsp_name || ""} 
 		${launch.rocket_full_name || ""}, 
         ${launch.mission_name || ""}
