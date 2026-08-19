@@ -8,8 +8,8 @@ import requests
 from datetime import datetime, timedelta, timezone
 
 # Calcola le date usando datetime aware in UTC
-two_days_ago = datetime.now(timezone.utc) - timedelta(days=3)
-tomorrow = datetime.now(timezone.utc) + timedelta(days=2)
+two_days_ago = datetime.now(timezone.utc) - timedelta(days=2)
+tomorrow = datetime.now(timezone.utc) + timedelta(days=3)
 
 # Formatta le date in ISO 8601
 start_date = two_days_ago.strftime("%Y-%m-%dT00:00:00Z")
@@ -18,10 +18,8 @@ end_date = tomorrow.strftime("%Y-%m-%dT23:59:59Z")
 # Costruisci l'URL
 URL = (
     "https://ll.thespacedevs.com/2.3.0/launches/"
-#    f"?window_start__gte={start_date}"
-    f"?net__gte={start_date}"
-#    f"&window_end__lte={end_date}"
-    f"&net__lte={end_date}"
+    f"?window_start__gte={start_date}"
+    f"&window_end__lte={end_date}"
 )
 
 
@@ -53,5 +51,4 @@ print(f"Trovati {len(launches)} lanci.")
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     for l in launches:
         f.write("{} | {} | {}\n".format(l["net"], l["name"], l["url"]))
-        
         
