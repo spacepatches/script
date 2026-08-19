@@ -8,8 +8,8 @@ import requests
 from datetime import datetime, timedelta, timezone
 
 # Calcola le date usando datetime aware in UTC
-two_days_ago = datetime.now(timezone.utc) - timedelta(days=2)
-tomorrow = datetime.now(timezone.utc) - timedelta(days=2)
+two_days_ago = datetime.now(timezone.utc) - timedelta(days=3)
+tomorrow = datetime.now(timezone.utc) + timedelta(days=2)
 
 # Formatta le date in ISO 8601
 start_date = two_days_ago.strftime("%Y-%m-%dT00:00:00Z")
