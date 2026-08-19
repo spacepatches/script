@@ -18,8 +18,10 @@ end_date = tomorrow.strftime("%Y-%m-%dT23:59:59Z")
 # Costruisci l'URL
 URL = (
     "https://ll.thespacedevs.com/2.3.0/launches/"
-    f"?window_start__gte={start_date}"
-    f"&window_end__lte={end_date}"
+#    f"?window_start__gte={start_date}"
+    f"?net__gte={start_date}"
+#    f"&window_end__lte={end_date}"
+    f"&net__lte={end_date}"
 )
 
 
